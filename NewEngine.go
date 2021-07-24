@@ -1,9 +1,8 @@
-package go-new-gin-engine
+package NewEngine
 
 import (
 	"github.com/gin-gonic/gin"
-	"arc-acl/src/com/yniii/config"
-	"arc-acl/src/com/yniii/utils/Thread"
+	"github.com/ynsluhan/go-new-thread"
 )
 
 /**
@@ -13,11 +12,10 @@ import (
 * @Version: 1.0.0
 * @Date: 2021/6/8 5:43 下午
  */
-func NewGin() *gin.Engine {
+func NewGin(debug bool) *gin.Engine {
 	var engine *gin.Engine
 	// 根据config判断是否为debug模式
-	//var conf =
-	if config.GetConf().GetBool("Server.debug") {
+	if debug {
 		engine = gin.Default()
 	} else {
 		// 生产模式，没有控制台日志
